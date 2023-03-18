@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      {% if session.logged_in %}
+        <a href="/">Home</a>
+        <a href="/logout">Log out</a>
+      {% else %}
+        <a href="/login">Log in</a>
+      {% endif %}
+    </nav>
+    {% block content %}
+    {% endblock %}
+  </body>
+</html>

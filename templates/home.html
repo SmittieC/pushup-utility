@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- <h1>Push Up Tracker</h1> -->
+    <h1> {{ pushups_left }} left </h1>
+    <h3> Stats:</h3>
+    <p>
+        <div> Pushups done: {{ pushup_count }} </div>
+        <div> Rate required without rest days: {{ rate_daily }} </div>
+        <div> Rate required for weekdays only: {{ rate_weekdays }} </div>
+        <div> Pushups today: {{ pushups_today }} </div>
+    </p>
+    
+
+    <form method="post" action="{{ url_for('pushups') }}">
+        <p>
+            <div>
+                <label for="pushups">How many did you do? </label>
+                <input type="number" id="pushups" name="pushups" value="0">
+            </div>
+        </p>
+        <p>
+            <div>
+                <input type="submit" value="Submit">
+            </div>
+        </p>
+    </form>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <p>
+        <table>
+            <thead>
+              <tr>
+                <th>Pushups</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for row in table_data %}
+              <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </p>
+</body>
+</html>
